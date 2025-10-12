@@ -97,9 +97,3 @@ Each LoopStack acts as both a **schema** and a **protocol** for recursive, agent
 When deployed across networks, they enable **Continuously Cascading AI** — a vision of distributed, emergent intelligence operating at **Internet scale**.
 
 ---
-
-## Related Concepts
-
-- [InterRealm Network](../interrealm/overview.md)
-- [Agentic Architecture](../agents/agentic-architecture.md)
-- [Recursive Coordination Protocols](../protocols/recursive-coordination.md)

@@ -1,186 +1,139 @@
 ---
-title: InterRealm — The Realm of Realms
-description: A new Internet layer for distributed collective intelligence built on realm-based recursive architectures and agentic sovereignty.
-author: Duncan Krebs
-tags:
-  - InterRealm
-  - Distributed Collective Intelligence
-  - Recursive AI
-  - Realms
-  - Sovereign Computing
-  - RealmTrix
+title: InterRealm Capabilities
+description: Dynamic, decentralized capabilities for building distributed AI systems with zero dependency hell and type-safe integration.
+sidebar_position: 1
+slug: /
 ---
 
-# Shifting Civilization: The AI Realm and Distributed Collective Intelligence
+# InterRealm Capabilities
 
-**Author: Duncan Krebs — September 2025**
+## Overview
 
----
+InterRealm works on a foundation of **dynamic, decentralized capabilities** that are automatically discovered and shared as clients connect to the network. Realms provide the governance layer that controls access to these capabilities, while our SDK and CLI make agent development effortless.
 
-## Abstract
+### How It Works
 
-The rapid centralization of artificial intelligence and digital infrastructure has created fragile, monopolistic systems that threaten privacy, innovation, and democracy itself.
+1. **Connect to a gateway** with your auth credentials
+2. **Capabilities automatically resolve** based on your realm's permissions
+3. **Static TypeScript types are generated** for all available capabilities
+4. **Build type-safe agents** using decorators and dependency injection
 
-For the last century, society has been shaped by a **centralization-first ideology**—one that produced efficiency and scale, but also imbalance, surveillance, and bureaucracies too large to adapt. Incremental reform has failed; the problems have outgrown the tools.
-
-We propose a new paradigm: the **InterRealm** — an interconnected network of **AI Realms** that are contextually scoped, individually owned, and recursively composable.
-
-Running on the open Internet, the InterRealm introduces a new routing and coordination protocol for **realm-based intelligence**, enabling decentralized collective cognition where ownership, computation, and governance begin at the individual.
+**The result:** Zero dependency hell. No credential management. Clean abstractions. Type-safe integration with the entire InterRealm network.
 
 ---
 
-## 1. Introduction: The Centralization Trap
+## Key Benefits
 
-The story of the modern world is the story of centralization. From industrial corporations to nation-states, it has been our organizing principle—yielding efficiency, scale, and predictability at immense cost.
+### ✅ Zero Agent Dependencies
+Your agents don't depend on specific implementations — they depend on **capability interfaces**. If a better implementation comes online, your agents automatically use it. No code changes needed.
 
-Today, power concentrates in two fragile centers:
+### ✅ No Credential Hell
+API keys, auth tokens, and secrets are managed by the gateway. Your application code **never sees credentials**. Deploy the same code to dev, staging, and production — the gateway handles environment-specific credentials automatically.
 
-- **Governments too large to reform:** Debt spirals, bureaucracy expands, and transparency decays.
-- **Corporations too entrenched to challenge:** A handful of platforms control access to knowledge, communication, and markets.
+### ✅ Dynamic Discovery
+As new realms connect and publish capabilities, they become available to your agents instantly. The CLI auto-generates updated types, and your IDE shows you what's newly available.
 
-These systems are not just inefficient—they are existentially fragile. We must evolve beyond centralization toward **distributed intelligence and sovereignty**.
-
----
-
-## 2. The Illusion of Policy-Based Solutions
-
-Modern societies respond to systemic failure with more policy: new committees, new oversight, new regulations. Yet these fixes operate at the same scale as the problems they attempt to solve.
-
-The truth is uncomfortable: **our problems have outgrown our tools.**
-Centralized systems are too big to adapt, too entrenched to reform.
-
-The answer lies not in new laws, but in a **new architecture**—a way of organizing computation, governance, and intelligence that restores contextual balance.
+### ✅ Type-Safe Integration
+Every service, event, and loop is strongly typed. Your IDE provides autocomplete, and TypeScript catches integration errors at compile time.
 
 ---
 
-## 3. Realms as the Context of Civilization
+## The Capability Model
 
-Human life already unfolds through *realms*:
+InterRealm capabilities are defined using a simple, open protocol. Each capability can expose:
 
-- The individual governs their own choices.
-- The family governs its shared life.
-- The school governs its students.
-- The company governs its business.
-- The state governs its citizens.
+- **Services** — Request/response RPC calls
+- **Events** — Pub/sub event streams
+- **Loops** — AI coordination patterns (recruitment → execution → aggregation)
+- **LoopStacks** — Sequences of loops for complex workflows
 
-Each realm has boundaries, sovereignty, and contextual logic. Centralization disrupts this natural recursion—overreaching governments and monopolistic corporations flatten contextual intelligence.
+### Publishing Capabilities
 
-The **realm** restores this natural order:
-a *sovereign, recursive digital container* that aligns governance and computation to the right scope.
+When you build an agent, the CLI automatically publishes its capabilities to the network:
 
----
+```bash
+# Your agent declares what it provides
+realm-cli publish ./my-agent
 
-## 4. Beyond Blockchain: The Missing Paradigm
-
-Blockchain promised decentralization but delivered **financial consensus**, not distributed intelligence.
-
-- Bitcoin proved value can move without intermediaries.
-- Ethereum proved contracts can run without trust.
-- Web3 imagined ownership without platforms.
-
-But none of these systems coordinate recursive, autonomous AI agents in real time.
-**Ownership of tokens is not ownership of intelligence.**
-
-True decentralization requires **ownership of computation** itself—individual control of one's own agents, data, and realm.
+# The gateway registers your capabilities
+# Other realms can now discover and use them
+```
 
 ---
 
-## 5. Recursion: Nature's Pattern for Intelligence
+## Services: Request/Response Pattern
 
-Nature is recursive: cells, organisms, ecosystems; individuals, families, societies.
-Intelligence itself is recursive—learning loops, feedback cycles, call stacks.
+```typescript
+import { Service, Capability } from '@realmtrix/sdk';
 
-Realms mirror this natural recursion:
+@Capability({ name: 'pricing', version: '1.0.0' })
+@Service({ name: 'PriceCheck' })
+export class PriceCheckAgent {
+  async call(request: PriceRequest): Promise<PriceResponse> {
+    const price = await this.checkPrice(request.productId);
+    return {
+      productId: request.productId,
+      price,
+      currency: 'USD',
+      timestamp: new Date()
+    };
+  }
 
-- A personal realm contains one's data, identity, and AI agents.
-- A family realm coordinates its members.
-- A company realm integrates departments (sub-realms).
-- A state realm governs citizens while respecting individual sovereignty.
-
-In computing, recursion enables complexity. In society, it enables governance.
-**Realms bring recursion to AI coordination**, uniting the two worlds.
-
----
-
-## 6. The InterRealm: A New Digital Fabric
-
-The **InterRealm** is the connective layer — the *realm of realms*.
-It's not a company or blockchain, but an **open protocol and mesh infrastructure** for secure, recursive, autonomous coordination.
-
-### Key Characteristics
-
-- **Sovereign Realms:** Each realm owns its data, agents, and governance.
-- **Secure Communication:** Realms exchange information via encrypted, contextual gateways.
-- **Recursive AI Loops:** Loops (see [LoopStacks](./concepts/loopstack.md)) cascade across realms, generating distributed collective intelligence.
-- **Dynamic Integration:** Agents and applications connect to realms using a lightweight SDK.
-
-### Developer Experience
-
-Developers connect their app or agent to a realm gateway within the IDE (e.g., VS Code).
-The SDK dynamically resolves available capabilities as **statically typed code**, auto-generated from realm metadata.
-
-This enables seamless, **policy-based integration without central orchestration**—a contract-driven model where realms define which services and data can be consumed.
+  private async checkPrice(productId: string): Promise<number> {
+    return 99.99;
+  }
+}
+```
 
 ---
 
-## 7. Real-Time Democracy and Contextual Governance
+## CLI Workflow
 
-The InterRealm introduces **real-time participatory governance**.
+1. **Initialize your project**
+```bash
+realm-cli init my-agent --template typescript
+```
 
-Citizens interact with their civic realms directly:
+2. **Login to gateway**
+```bash
+realm-cli login --gateway wss://my-company.interrealm.io --realm my-company.production
+```
 
-- Policies and budgets can be debated and voted on continuously.
-- Officials serve within transparent, context-aware systems.
-- Bureaucracy is replaced by **regulation-as-a-service** at the realm boundary.
+3. **Develop your agent**
+```typescript
+import { Service, Inject } from '@realmtrix/sdk';
+import { PriceCheckService } from '../generated/capabilities/pricing';
 
-Governance becomes recursive, participatory, and adaptive — restoring democracy to the flow of daily life.
+@Service({ name: 'MyAgent' })
+export class MyAgent {
+  @Inject('pricing', 'PriceCheck')
+  private pricing!: PriceCheckService;
 
----
+  async call(req: MyRequest): Promise<MyResponse> {
+    const result = await this.pricing.call({ productId: req.productId });
+    return { price: result.price };
+  }
+}
+```
 
-## 8. Breaking Big Tech's Monopoly
+4. **Publish capabilities**
+```bash
+realm-cli publish ./my-agent
+```
 
-The InterRealm redefines digital sovereignty:
-
-- **Data lives in your realm** — not in corporate silos.
-- **Social connections form directly** — no platform mediation.
-- **Commerce occurs peer-to-peer** — no extractive intermediaries.
-- **Applications publish capabilities to realms**, not app stores.
-
-In this model, *corporations accept your terms*, not the other way around.
-Monopolies dissolve through architecture, not regulation.
-
----
-
-## 9. The RealmTrix and OpenRealm Ecosystem
-
-To operationalize this architecture:
-
-- **OpenRealm** — open-source foundation defining the specifications and governance protocols.
-- **RealmTrix** — commercial hosting marketplace providing cloud or on-premise realm infrastructure for organizations.
-- **InterRealm Mesh** — service mesh layer connecting realms securely and recursively.
-
-These form the foundation for a **post-platform civilization**, where individuals, communities, and enterprises can deploy intelligent, sovereign computation seamlessly.
-
----
-
-## 10. The Future: Technology That Disappears
-
-The best technology is invisible.
-The InterRealm envisions AI and computation as quiet infrastructure—like water or light—serving without dominating.
-
-Phones fade away. Bureaucracy dissolves. Work becomes human again.
-Technology aligns with nature's recursion and humanity's sovereignty.
+5. **Sync updates**
+```bash
+realm-cli sync
+```
 
 ---
 
-## Conclusion
+## Summary
 
-**Centralization built the modern world—but it cannot sustain the next one.**
-The InterRealm represents a new social and computational contract — where governance is contextual, intelligence is recursive, and sovereignty begins with the individual.
+**InterRealm capabilities** enable:
+- **Services** — Simple RPC between agents
+- **Events** — Pub/sub for decoupled communication
+- **Loops** — Multi-agent coordination with verifiable consensus
+- **LoopStacks** — Recursive workflows for agentic intelligence
 
-Together, **OpenRealm**, **LoopStacks**, and **RealmTrix** form the foundation for a **Distributed Collective Intelligence** — a civilization where autonomy, participation, and intelligence are woven directly into the digital fabric.
-
----
-
-> "We are not building another platform. We are building the fabric of a new civilization."
-> — *Duncan Krebs*
+**Build distributed AI systems as easily as calling functions.**
